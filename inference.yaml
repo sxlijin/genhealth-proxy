@@ -1,0 +1,19 @@
+openapi: 3.0.0
+info:
+  title: Pet Store API
+  version: 1.0.0
+paths:
+  /pets:
+    get:
+      summary: Get a list of all pets
+      operationId: pets.get_pets
+      responses:
+        '200':
+          description: A list of pets
+          content:
+            application/json:
+              example:
+                - id: 1
+                  name: Fido
+                - id: 2
+                  name: Whiskers
