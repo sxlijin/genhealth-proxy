@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Pet Store API
-  version: 1.0.0
+  title: GenHealth API
+  version: 0.0.1
 paths:
   /pets:
     get:
@@ -17,3 +17,65 @@ paths:
                   name: Fido
                 - id: 2
                   name: Whiskers
+  /predict:
+    post:
+      summary: Make predictions about the patient
+      operationId: inference.post_predict
+
+      requestBody:
+        description: Request for making predictions
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PredictionRequest'
+      responses:
+        '200':
+          description: The returned prediction
+          content:
+            application/json:
+              example:
+                - id: 1
+                  name: Fido
+                - id: 2
+                  name: Whiskers
+components:
+  schemas:
+    PredictionRequest:
+      type: object
+      properties:
+        history:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              system:
+                type: string
+              display:
+                type: string
+            required:
+              - code
+              - system
+              - display
+        num_predictions:
+          type: integer
+          minimum: 1
+        generation_length:
+          type: integer
+          minimum: 1
+        inference_threshold:
+          type: number
+          minimum: 0.0
+          maximum: 1.0
+        inference_temperature:
+          type: number
+          minimum: 0.0
+          maximum: 1.0
+      required:
+        - history
+        - num_predictions
+        - generation_length
+        - inference_threshold
+        - inference_temperature
