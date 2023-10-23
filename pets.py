@@ -1,3 +1,5 @@
+import json
+
 pets = [
     {"id": 1, "name": "Fido", "species": "Dog"},
     {"id": 2, "name": "Whiskers", "species": "Cat"},

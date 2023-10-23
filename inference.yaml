@@ -79,3 +79,34 @@ components:
         - generation_length
         - inference_threshold
         - inference_temperature
+
+    PredictionResponse:
+      type: object
+      properties:
+        history:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              system:
+                type: string
+              display:
+                type: string
+        predictions:
+          type: array
+          items:
+            type: array
+            items:
+              type: object
+              properties:
+                code:
+                  type: string
+                system:
+                  type: string
+                display:
+                  type: string
+      required:
+        - history
+        - predictions

@@ -1,4 +1,6 @@
-json_data = {
+import json
+
+example_request = {
     'history': [
         {
             'code': '64',
@@ -51,5 +53,4 @@ fake_inference_response = {
                        'system': 'ICD10CM'}]]}
 
 def post_predict():
-    return json.dumps(pets), 200
-
+    return json.dumps(fake_inference_response), 200
